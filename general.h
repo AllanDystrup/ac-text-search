@@ -49,8 +49,8 @@
 		#define vprintf (fmt, argp) _doprnt( fmt, argp, stdout )
 		typedef long time_t;        /* for the VAX, may have to change this  */
 		/*typedef unsigned size_t;*//* for the VAX, may have to change this  */
-		//extern  char *strdup();   /* Not tolerated by LINUX* /
-		//typedef int void;			/* Not tolerated by LINUX* /
+		//extern  char *strdup();   /* Not tolerated by LINUX ISO/IEC gcc   */
+		//typedef int void;			/* Not tolerated by LINUX ISO/IEC gcc   */
 	#endif  /* MSDOS - UNIX */
 
 	#ifdef ANSI                 	/* If ANSI is defined, put arg lists into */

@@ -1,9 +1,11 @@
+SOURCE COMPILED WITH #undef DEBUG
 
-OUTPUT FROM SOURCE COMPILED WITH: #define DEBUG
+/home/allan/CLionProjects/ac/cmake-build-debug/ac FSA&^(Dfsa/Nfsa) ./ac.c
 
-/home/allan/CLionProjects/ac/cmake-build-debug/ac -U FSA&^(Dfsa/Nfsa) ./ac.c
 
 =============== BUILDING NEW FSA =================
+
+INFIX.. : FSA&^(Dfsa/Nfsa)
 
 PARSE INPUT STRING ...
    INSERT :     symtable[1] <- [FSA]
@@ -15,132 +17,97 @@ EMIT ID : []-index[1]->[FSA]
     term[^]
       vFactor[^]
       vFactor[(]
-   INSERT :     symtable[2] <- [DFSA]
+   INSERT :     symtable[2] <- [Dfsa]
   vExpr[I]
     term[I]
       vFactor[I]
-EMIT ID : []-index[2]->[DFSA]
-   INSERT :     symtable[3] <- [NFSA]
+EMIT ID : []-index[2]->[Dfsa]
+   INSERT :     symtable[3] <- [Nfsa]
   vExpr[I]
     term[I]
       vFactor[I]
-EMIT ID : []-index[3]->[NFSA]
-EMIT OP : [/ ~ ?]
-EMIT OP : [^ ~ ?]
-EMIT OP : [& ~ ?]
+EMIT ID : []-index[3]->[Nfsa]
+EMIT OP : [/ ~ �]
+EMIT OP : [^ ~ �]
+EMIT OP : [& ~ �]
 EMIT EOS: [NULL]
-        ./ac.c
+
+POSTFIX : [�ަ ~ /^&]
+
+INPUT TEXT :    ./ac.c
+
+BUILD FSA type DFSA
+ENTER ...
+        TerminalState[0x58f4602bc730], Index[1]-->[FSA]
 
 ENTER ...
-        TerminalState[0x6453daa1c730], Index[1]-->[FSA]
+        TerminalState[0x58f4602bc870], Index[2]-->[Dfsa]
 
 ENTER ...
-        TerminalState[0x6453daa1c870], Index[2]-->[DFSA]
-
-ENTER ...
-        TerminalState[0x6453daa1c9b0], Index[3]-->[NFSA]
-
-DUMP OF STATE MACHINE TYPE NFSA ...
-
-State: 0[D]
-D -> 0x6453daa1c7a0
-   State: 0x6453daa1c7a0 [ ]
-   FAIL -> (nil)
-   F    -> 0x6453daa1c7d0
-      State: 0x6453daa1c7d0 [ ]
-      FAIL      -> 0x6453daa1c6b0
-      S -> 0x6453daa1c820
-         State: 0x6453daa1c820 [ ]
-         FAIL   -> 0x6453daa1c6e0
-         A      -> 0x6453daa1c870
-            State: 0x6453daa1c870 [ DFSA FSA ]
-            FAIL        -> 0x6453daa1c730
-
-State: 0[F]
-F -> 0x6453daa1c6b0
-   State: 0x6453daa1c6b0 [ ]
-   FAIL -> (nil)
-   S    -> 0x6453daa1c6e0
-      State: 0x6453daa1c6e0 [ ]
-      FAIL      -> (nil)
-      A -> 0x6453daa1c730
-         State: 0x6453daa1c730 [ FSA ]
-         FAIL   -> (nil)
-
-State: 0[N]
-N -> 0x6453daa1c8e0
-   State: 0x6453daa1c8e0 [ ]
-   FAIL -> (nil)
-   F    -> 0x6453daa1c910
-      State: 0x6453daa1c910 [ ]
-      FAIL      -> 0x6453daa1c6b0
-      S -> 0x6453daa1c960
-         State: 0x6453daa1c960 [ ]
-         FAIL   -> 0x6453daa1c6e0
-         A      -> 0x6453daa1c9b0
-            State: 0x6453daa1c9b0 [ NFSA FSA ]
-            FAIL        -> 0x6453daa1c730
+        TerminalState[0x58f4602bc9b0], Index[3]-->[Nfsa]
 
 DUMP OF STATE MACHINE TYPE DFSA ...
 
 State: 0[D]
-D -> 0x6453daa1c7a0
-   State: 0x6453daa1c7a0 [ ]
-   D    -> 0x6453daa1c7a0
-   F    -> 0x6453daa1c7d0
-      State: 0x6453daa1c7d0 [ ]
-      D -> 0x6453daa1c7a0
-      F -> 0x6453daa1c6b0
-         State: 0x6453daa1c6b0 [ ]
-         D      -> 0x6453daa1c7a0
-         F      -> 0x6453daa1c6b0
-         N      -> 0x6453daa1c8e0
-            State: 0x6453daa1c8e0 [ ]
-            D   -> 0x6453daa1c7a0
-            F   -> 0x6453daa1c910
-               State: 0x6453daa1c910 [ ]
-               D        -> 0x6453daa1c7a0
-               F        -> 0x6453daa1c6b0
-               N        -> 0x6453daa1c8e0
-               S        -> 0x6453daa1c960
-                  State: 0x6453daa1c960 [ ]
-                  A     -> 0x6453daa1c9b0
-                     State: 0x6453daa1c9b0 [ NFSA FSA ]
-                     D  -> 0x6453daa1c7a0
-                     F  -> 0x6453daa1c6b0
-                     N  -> 0x6453daa1c8e0
-                  D     -> 0x6453daa1c7a0
-                  F     -> 0x6453daa1c6b0
-                  N     -> 0x6453daa1c8e0
-            N   -> 0x6453daa1c8e0
-         S      -> 0x6453daa1c6e0
-            State: 0x6453daa1c6e0 [ ]
-            A   -> 0x6453daa1c730
-               State: 0x6453daa1c730 [ FSA ]
-               D        -> 0x6453daa1c7a0
-               F        -> 0x6453daa1c6b0
-               N        -> 0x6453daa1c8e0
-            D   -> 0x6453daa1c7a0
-            F   -> 0x6453daa1c6b0
-            N   -> 0x6453daa1c8e0
-      N -> 0x6453daa1c8e0
-      S -> 0x6453daa1c820
-         State: 0x6453daa1c820 [ ]
-         A      -> 0x6453daa1c870
-            State: 0x6453daa1c870 [ DFSA FSA ]
-            D   -> 0x6453daa1c7a0
-            F   -> 0x6453daa1c6b0
-            N   -> 0x6453daa1c8e0
-         D      -> 0x6453daa1c7a0
-         F      -> 0x6453daa1c6b0
-         N      -> 0x6453daa1c8e0
-   N    -> 0x6453daa1c8e0
+D -> 0x58f4602bc7a0
+   State: 0x58f4602bc7a0 [ ]
+   D    -> 0x58f4602bc7a0
+   F    -> 0x58f4602bc6b0
+      State: 0x58f4602bc6b0 [ ]
+      D -> 0x58f4602bc7a0
+      F -> 0x58f4602bc6b0
+      N -> 0x58f4602bc8e0
+         State: 0x58f4602bc8e0 [ ]
+         D      -> 0x58f4602bc7a0
+         F      -> 0x58f4602bc6b0
+         N      -> 0x58f4602bc8e0
+         f      -> 0x58f4602bc910
+            State: 0x58f4602bc910 [ ]
+            D   -> 0x58f4602bc7a0
+            F   -> 0x58f4602bc6b0
+            N   -> 0x58f4602bc8e0
+            s   -> 0x58f4602bc960
+               State: 0x58f4602bc960 [ ]
+               D        -> 0x58f4602bc7a0
+               F        -> 0x58f4602bc6b0
+               N        -> 0x58f4602bc8e0
+               a        -> 0x58f4602bc9b0
+                  State: 0x58f4602bc9b0 [ Nfsa ]
+                  D     -> 0x58f4602bc7a0
+                  F     -> 0x58f4602bc6b0
+                  N     -> 0x58f4602bc8e0
+      S -> 0x58f4602bc6e0
+         State: 0x58f4602bc6e0 [ ]
+         A      -> 0x58f4602bc730
+            State: 0x58f4602bc730 [ FSA ]
+            D   -> 0x58f4602bc7a0
+            F   -> 0x58f4602bc6b0
+            N   -> 0x58f4602bc8e0
+         D      -> 0x58f4602bc7a0
+         F      -> 0x58f4602bc6b0
+         N      -> 0x58f4602bc8e0
+   N    -> 0x58f4602bc8e0
+   f    -> 0x58f4602bc7d0
+      State: 0x58f4602bc7d0 [ ]
+      D -> 0x58f4602bc7a0
+      F -> 0x58f4602bc6b0
+      N -> 0x58f4602bc8e0
+      s -> 0x58f4602bc820
+         State: 0x58f4602bc820 [ ]
+         D      -> 0x58f4602bc7a0
+         F      -> 0x58f4602bc6b0
+         N      -> 0x58f4602bc8e0
+         a      -> 0x58f4602bc870
+            State: 0x58f4602bc870 [ Dfsa ]
+            D   -> 0x58f4602bc7a0
+            F   -> 0x58f4602bc6b0
+            N   -> 0x58f4602bc8e0
 
 State: 0[F]
-F -> 0x6453daa1c6b0
+F -> 0x58f4602bc6b0
 
 State: 0[N]
-N -> 0x6453daa1c8e0
+N -> 0x58f4602bc8e0
 
 -------------------------------------------------------
 INPUT ...
@@ -185,11 +152,433 @@ RUN FSA ON INPUT ...
         MOVE  [(nil)] --(=)--> [(nil)]
         MOVE  [(nil)] --(=)--> [(nil)]
         MOVE  [(nil)] --(=)--> [(nil)]
-        MOVE  [(nil)] --(F)--> [0x6453daa1c6b0]
-        MOVE  [0x6453daa1c6b0] --(S)--> [0x6453daa1c6e0]
-        MOVE  [0x6453daa1c6e0] --(A)--> [0x6453daa1c730]
+        MOVE  [(nil)] --(F)--> [0x58f4602bc6b0]
+        MOVE  [0x58f4602bc6b0] --(S)--> [0x58f4602bc6e0]
+        MOVE  [0x58f4602bc6e0] --(A)--> [0x58f4602bc730]
                 HIT lexeme [FSA]
-        MOVE  [0x6453daa1c730] --(=)--> [(nil)]
+        MOVE  [0x58f4602bc730] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(*)--> [(nil)]
+        MOVE  [(nil)] --(/)--> [(nil)]
+
+INTERPRET ...
+Symboltable Boolean values :
+        symtable[1] : FSA TRUE
+        symtable[2] : Dfsa FALSE
+        symtable[3] : Nfsa FALSE
+Postfix Boolean evaluation :
+        ID      FSA
+        ID      Dfsa
+        ID      Nfsa
+        STACK   0->0    1->0
+        OR      0->0
+        STACK   0->0
+        NOT     0->1
+        STACK   0->1    1->1
+        AND     0->1
+
+OUTPUT ...
+>       /*+1=================================FSA====================================*/
+
+-------------------------------------------------------
+INPUT ...
+<       [/* MODULE                            AC.C                                   */]
+
+RUN FSA ON INPUT ...
+
+        MOVE  [(nil)] --(/)--> [(nil)]
+        MOVE  [(nil)] --(*)--> [(nil)]
+        MOVE  [(nil)] --( )--> [(nil)]
+        MOVE  [(nil)] --(M)--> [(nil)]
+        MOVE  [(nil)] --(O)--> [(nil)]
+        MOVE  [(nil)] --(D)--> [0x58f4602bc7a0]
+        MOVE  [0x58f4602bc7a0] --(U)--> [(nil)]
+        MOVE  [(nil)] --(L)--> [(nil)]
+        MOVE  [(nil)] --(E)--> [(nil)]
+        MOVE  [(nil)] --( )--> [(nil)]
+        MOVE  [(nil)] --( )--> [(nil)]
+        MOVE  [(nil)] --( )--> [(nil)]
+        MOVE  [(nil)] --( )--> [(nil)]
+        MOVE  [(nil)] --( )--> [(nil)]
+        MOVE  [(nil)] --( )--> [(nil)]
+        MOVE  [(nil)] --( )--> [(nil)]
+        MOVE  [(nil)] --( )--> [(nil)]
+        MOVE  [(nil)] --( )--> [(nil)]
+        MOVE  [(nil)] --( )--> [(nil)]
+        MOVE  [(nil)] --( )--> [(nil)]
+        MOVE  [(nil)] --( )--> [(nil)]
+        MOVE  [(nil)] --( )--> [(nil)]
+        MOVE  [(nil)] --( )--> [(nil)]
+        MOVE  [(nil)] --( )--> [(nil)]
+        MOVE  [(nil)] --( )--> [(nil)]
+        MOVE  [(nil)] --( )--> [(nil)]
+        MOVE  [(nil)] --( )--> [(nil)]
+        MOVE  [(nil)] --( )--> [(nil)]
+        MOVE  [(nil)] --( )--> [(nil)]
+        MOVE  [(nil)] --( )--> [(nil)]
+        MOVE  [(nil)] --( )--> [(nil)]
+        MOVE  [(nil)] --( )--> [(nil)]
+        MOVE  [(nil)] --( )--> [(nil)]
+        MOVE  [(nil)] --( )--> [(nil)]
+        MOVE  [(nil)] --( )--> [(nil)]
+        MOVE  [(nil)] --( )--> [(nil)]
+        MOVE  [(nil)] --( )--> [(nil)]
+        MOVE  [(nil)] --(A)--> [(nil)]
+        MOVE  [(nil)] --(C)--> [(nil)]
+        MOVE  [(nil)] --(.)--> [(nil)]
+        MOVE  [(nil)] --(C)--> [(nil)]
+        MOVE  [(nil)] --( )--> [(nil)]
+        MOVE  [(nil)] --( )--> [(nil)]
+        MOVE  [(nil)] --( )--> [(nil)]
+        MOVE  [(nil)] --( )--> [(nil)]
+        MOVE  [(nil)] --( )--> [(nil)]
+        MOVE  [(nil)] --( )--> [(nil)]
+        MOVE  [(nil)] --( )--> [(nil)]
+        MOVE  [(nil)] --( )--> [(nil)]
+        MOVE  [(nil)] --( )--> [(nil)]
+        MOVE  [(nil)] --( )--> [(nil)]
+        MOVE  [(nil)] --( )--> [(nil)]
+        MOVE  [(nil)] --( )--> [(nil)]
+        MOVE  [(nil)] --( )--> [(nil)]
+        MOVE  [(nil)] --( )--> [(nil)]
+        MOVE  [(nil)] --( )--> [(nil)]
+        MOVE  [(nil)] --( )--> [(nil)]
+        MOVE  [(nil)] --( )--> [(nil)]
+        MOVE  [(nil)] --( )--> [(nil)]
+        MOVE  [(nil)] --( )--> [(nil)]
+        MOVE  [(nil)] --( )--> [(nil)]
+        MOVE  [(nil)] --( )--> [(nil)]
+        MOVE  [(nil)] --( )--> [(nil)]
+        MOVE  [(nil)] --( )--> [(nil)]
+        MOVE  [(nil)] --( )--> [(nil)]
+        MOVE  [(nil)] --( )--> [(nil)]
+        MOVE  [(nil)] --( )--> [(nil)]
+        MOVE  [(nil)] --( )--> [(nil)]
+        MOVE  [(nil)] --( )--> [(nil)]
+        MOVE  [(nil)] --( )--> [(nil)]
+        MOVE  [(nil)] --( )--> [(nil)]
+        MOVE  [(nil)] --( )--> [(nil)]
+        MOVE  [(nil)] --( )--> [(nil)]
+        MOVE  [(nil)] --( )--> [(nil)]
+        MOVE  [(nil)] --( )--> [(nil)]
+        MOVE  [(nil)] --( )--> [(nil)]
+        MOVE  [(nil)] --(*)--> [(nil)]
+        MOVE  [(nil)] --(/)--> [(nil)]
+
+INTERPRET ...
+Symboltable Boolean values :
+        symtable[1] : FSA FALSE
+        symtable[2] : Dfsa FALSE
+        symtable[3] : Nfsa FALSE
+Postfix Boolean evaluation :
+        ID      FSA
+        ID      Dfsa
+        ID      Nfsa
+        STACK   0->0    1->0
+        OR      0->0
+        STACK   0->0
+        NOT     0->1
+        STACK   0->1    1->0
+        AND     0->0
+
+-------------------------------------------------------
+INPUT ...
+<       [/*=================================NFSA DFSA================================*/]
+
+RUN FSA ON INPUT ...
+
+        MOVE  [(nil)] --(/)--> [(nil)]
+        MOVE  [(nil)] --(*)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(N)--> [0x58f4602bc8e0]
+        MOVE  [0x58f4602bc8e0] --(F)--> [0x58f4602bc6b0]
+        MOVE  [0x58f4602bc6b0] --(S)--> [0x58f4602bc6e0]
+        MOVE  [0x58f4602bc6e0] --(A)--> [0x58f4602bc730]
+                HIT lexeme [FSA]
+        MOVE  [0x58f4602bc730] --( )--> [(nil)]
+        MOVE  [(nil)] --(D)--> [0x58f4602bc7a0]
+        MOVE  [0x58f4602bc7a0] --(F)--> [0x58f4602bc6b0]
+        MOVE  [0x58f4602bc6b0] --(S)--> [0x58f4602bc6e0]
+        MOVE  [0x58f4602bc6e0] --(A)--> [0x58f4602bc730]
+                HIT lexeme [FSA]
+        MOVE  [0x58f4602bc730] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(*)--> [(nil)]
+        MOVE  [(nil)] --(/)--> [(nil)]
+
+INTERPRET ...
+Symboltable Boolean values :
+        symtable[1] : FSA TRUE
+        symtable[2] : Dfsa FALSE
+        symtable[3] : Nfsa FALSE
+Postfix Boolean evaluation :
+        ID      FSA
+        ID      Dfsa
+        ID      Nfsa
+        STACK   0->0    1->0
+        OR      0->0
+        STACK   0->0
+        NOT     0->1
+        STACK   0->1    1->1
+        AND     0->1
+
+OUTPUT ...
+>       /*=================================NFSA DFSA================================*/
+
+
+####################################################################################################
+
+/home/allan/CLionProjects/ac/cmake-build-debug/ac -U FSA&^(Dfsa/Nfsa) ./ac.c
+
+
+=============== BUILDING NEW FSA =================
+
+INFIX.. : FSA&^(Dfsa/Nfsa)
+
+PARSE INPUT STRING ...
+   INSERT :     symtable[1] <- [FSA]
+parse[I]
+  vExpr[I]
+    term[I]
+      vFactor[I]
+EMIT ID : []-index[1]->[FSA]
+    term[^]
+      vFactor[^]
+      vFactor[(]
+   INSERT :     symtable[2] <- [DFSA]
+  vExpr[I]
+    term[I]
+      vFactor[I]
+EMIT ID : []-index[2]->[DFSA]
+   INSERT :     symtable[3] <- [NFSA]
+  vExpr[I]
+    term[I]
+      vFactor[I]
+EMIT ID : []-index[3]->[NFSA]
+EMIT OP : [/ ~ �]
+EMIT OP : [^ ~ �]
+EMIT OP : [& ~ �]
+EMIT EOS: [NULL]
+
+POSTFIX : [�ަ ~ /^&]
+
+INPUT TEXT :    ./ac.c
+
+BUILD FSA type DFSA
+ENTER ...
+        TerminalState[0x5b3a55737730], Index[1]-->[FSA]
+
+ENTER ...
+        TerminalState[0x5b3a55737870], Index[2]-->[DFSA]
+
+ENTER ...
+        TerminalState[0x5b3a557379b0], Index[3]-->[NFSA]
+
+DUMP OF STATE MACHINE TYPE DFSA ...
+
+State: 0[D]
+D -> 0x5b3a557377a0
+   State: 0x5b3a557377a0 [ ]
+   D    -> 0x5b3a557377a0
+   F    -> 0x5b3a557377d0
+      State: 0x5b3a557377d0 [ ]
+      D -> 0x5b3a557377a0
+      F -> 0x5b3a557376b0
+         State: 0x5b3a557376b0 [ ]
+         D      -> 0x5b3a557377a0
+         F      -> 0x5b3a557376b0
+         N      -> 0x5b3a557378e0
+            State: 0x5b3a557378e0 [ ]
+            D   -> 0x5b3a557377a0
+            F   -> 0x5b3a55737910
+               State: 0x5b3a55737910 [ ]
+               D        -> 0x5b3a557377a0
+               F        -> 0x5b3a557376b0
+               N        -> 0x5b3a557378e0
+               S        -> 0x5b3a55737960
+                  State: 0x5b3a55737960 [ ]
+                  A     -> 0x5b3a557379b0
+                     State: 0x5b3a557379b0 [ NFSA FSA ]
+                     D  -> 0x5b3a557377a0
+                     F  -> 0x5b3a557376b0
+                     N  -> 0x5b3a557378e0
+                  D     -> 0x5b3a557377a0
+                  F     -> 0x5b3a557376b0
+                  N     -> 0x5b3a557378e0
+            N   -> 0x5b3a557378e0
+         S      -> 0x5b3a557376e0
+            State: 0x5b3a557376e0 [ ]
+            A   -> 0x5b3a55737730
+               State: 0x5b3a55737730 [ FSA ]
+               D        -> 0x5b3a557377a0
+               F        -> 0x5b3a557376b0
+               N        -> 0x5b3a557378e0
+            D   -> 0x5b3a557377a0
+            F   -> 0x5b3a557376b0
+            N   -> 0x5b3a557378e0
+      N -> 0x5b3a557378e0
+      S -> 0x5b3a55737820
+         State: 0x5b3a55737820 [ ]
+         A      -> 0x5b3a55737870
+            State: 0x5b3a55737870 [ DFSA FSA ]
+            D   -> 0x5b3a557377a0
+            F   -> 0x5b3a557376b0
+            N   -> 0x5b3a557378e0
+         D      -> 0x5b3a557377a0
+         F      -> 0x5b3a557376b0
+         N      -> 0x5b3a557378e0
+   N    -> 0x5b3a557378e0
+
+State: 0[F]
+F -> 0x5b3a557376b0
+
+State: 0[N]
+N -> 0x5b3a557378e0
+
+-------------------------------------------------------
+INPUT ...
+<       [/*+1=================================FSA====================================*/]
+
+RUN FSA ON INPUT ...
+
+        MOVE  [(nil)] --(/)--> [(nil)]
+        MOVE  [(nil)] --(*)--> [(nil)]
+        MOVE  [(nil)] --(+)--> [(nil)]
+        MOVE  [(nil)] --(1)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(F)--> [0x5b3a557376b0]
+        MOVE  [0x5b3a557376b0] --(S)--> [0x5b3a557376e0]
+        MOVE  [0x5b3a557376e0] --(A)--> [0x5b3a55737730]
+                HIT lexeme [FSA]
+        MOVE  [0x5b3a55737730] --(=)--> [(nil)]
         MOVE  [(nil)] --(=)--> [(nil)]
         MOVE  [(nil)] --(=)--> [(nil)]
         MOVE  [(nil)] --(=)--> [(nil)]
@@ -258,8 +647,8 @@ RUN FSA ON INPUT ...
         MOVE  [(nil)] --( )--> [(nil)]
         MOVE  [(nil)] --(M)--> [(nil)]
         MOVE  [(nil)] --(O)--> [(nil)]
-        MOVE  [(nil)] --(D)--> [0x6453daa1c7a0]
-        MOVE  [0x6453daa1c7a0] --(U)--> [(nil)]
+        MOVE  [(nil)] --(D)--> [0x5b3a557377a0]
+        MOVE  [0x5b3a557377a0] --(U)--> [(nil)]
         MOVE  [(nil)] --(L)--> [(nil)]
         MOVE  [(nil)] --(E)--> [(nil)]
         MOVE  [(nil)] --( )--> [(nil)]
@@ -350,40 +739,186 @@ Postfix Boolean evaluation :
 
 -------------------------------------------------------
 INPUT ...
-<       [/*==========================================================================*/]
+<       [/*=================================NFSA DFSA================================*/]
+
+RUN FSA ON INPUT ...
+
+        MOVE  [(nil)] --(/)--> [(nil)]
+        MOVE  [(nil)] --(*)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(N)--> [0x5b3a557378e0]
+        MOVE  [0x5b3a557378e0] --(F)--> [0x5b3a55737910]
+        MOVE  [0x5b3a55737910] --(S)--> [0x5b3a55737960]
+        MOVE  [0x5b3a55737960] --(A)--> [0x5b3a557379b0]
+                HIT lexeme [NFSA]
+                HIT lexeme [FSA]
+        MOVE  [0x5b3a557379b0] --( )--> [(nil)]
+        MOVE  [(nil)] --(D)--> [0x5b3a557377a0]
+        MOVE  [0x5b3a557377a0] --(F)--> [0x5b3a557377d0]
+        MOVE  [0x5b3a557377d0] --(S)--> [0x5b3a55737820]
+        MOVE  [0x5b3a55737820] --(A)--> [0x5b3a55737870]
+                HIT lexeme [DFSA]
+                HIT lexeme [FSA]
+        MOVE  [0x5b3a55737870] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(=)--> [(nil)]
+        MOVE  [(nil)] --(*)--> [(nil)]
+        MOVE  [(nil)] --(/)--> [(nil)]
+
+INTERPRET ...
+Symboltable Boolean values :
+        symtable[1] : FSA TRUE
+        symtable[2] : DFSA TRUE
+        symtable[3] : NFSA TRUE
+Postfix Boolean evaluation :
+        ID      FSA
+        ID      DFSA
+        ID      NFSA
+        STACK   0->1    1->1
+        OR      0->1
+        STACK   0->1
+        NOT     0->0
+        STACK   0->0    1->1
+        AND     0->0
+
+-------------------------------------------------------
+INPUT ...
+
+etc.
+etc.
+etc.
 
 
+DELETION OF STATE MACHINE ...
 
-SOURCE COMPILED WITH: #undef DEBUG
 
-/home/allan/CLionProjects/ac/cmake-build-debug/ac -U FSA&^(Dfsa/Nfsa) ./ac.c
+[0] --(D)--> [0x5b3a557377a0]
+   FREE MV-sTRANS: [0x5b3a557377a0] --(D)--> [0x5b3a557377a0]
+   FREE MV-sTRANS: [0x5b3a557377a0] --(F)--> [0x5b3a557377d0]
+   FREE MV-sTRANS: [0x5b3a557377a0] --(N)--> [0x5b3a557378e0]
+      FREE MV-sTRANS: [0x5b3a557377d0] --(D)--> [0x5b3a557377a0]
+      FREE MV-sTRANS: [0x5b3a557377d0] --(F)--> [0x5b3a557376b0]
+      FREE MV-sTRANS: [0x5b3a557377d0] --(N)--> [0x5b3a557378e0]
+      FREE MV-sTRANS: [0x5b3a557377d0] --(S)--> [0x5b3a55737820]
+         FREE MV-sTRANS: [0x5b3a55737820] --(A)--> [0x5b3a55737870]
+         FREE MV-sTRANS: [0x5b3a55737820] --(D)--> [0x5b3a557377a0]
+         FREE MV-sTRANS: [0x5b3a55737820] --(F)--> [0x5b3a557376b0]
+         FREE MV-sTRANS: [0x5b3a55737820] --(N)--> [0x5b3a557378e0]
+            FREE MV-sTRANS: [0x5b3a55737870] --(D)--> [0x5b3a557377a0]
+            FREE MV-sTRANS: [0x5b3a55737870] --(F)--> [0x5b3a557376b0]
+            FREE MV-sTRANS: [0x5b3a55737870] --(N)--> [0x5b3a557378e0]
+            FREE sSTATE: [0x5b3a55737870]
+         FREE GO-sTRANS: [0x5b3a55737820] --(A)--> [0x5b3a55737870]
+         FREE sSTATE: [0x5b3a55737820]
+      FREE GO-sTRANS: [0x5b3a557377d0] --(S)--> [0x5b3a55737820]
+      FREE sSTATE: [0x5b3a557377d0]
+   FREE GO-sTRANS: [0x5b3a557377a0] --(F)--> [0x5b3a557377d0]
+   FREE sSTATE: [0x5b3a557377a0]
 
-/*+1=================================FSA====================================*/
-*             AUTOMATON" (FSA) TO LOCATE ALL OCCURENCES OF ANY OF A NUMBER
-* A PATTERN MATCHING MACHINE ALSO CALLED A "FINITE STATE AUTOMATON" (FSA)
-TYPEDEF STRUCT TRANSITION {     /* FSA TRANSITION ELEMENT -----------  */
-TYPEDEF STRUCT STATE {          /* FSA STATE ELEMENT ----------------- */
-PRIVATE VOID    VDUMPFSA(INT TYPE);
-        D(PRINTF("\N\N=============== BUILDING NEW FSA =================\N\N"));
-                VDELFSA();
-* CONSTRUCT A "FINITE STATE AUTOMATON" (FSA) FROM THE KEYWORDS IN SYMTABLE[]
-*    3: DUMP OF FSA FOR DEBYGGING (OPTIONAL)
-        /* 3: DUMP FSA FOR DEBUGGING (OPTIONAL) */
-* CONSTRUCTION OF GOTO GRAPH DATA STRUCTURE FOR THE GOTO FUNCTION G OF FSA.
-        /* 1: INITIALIZE FSA STATE 0 GO TRANSITION ARRAY TO : G(0,X) = FAIL */
-*    2: RUN FSA ON INPUT-LINE <STR>, AND NOTE "HITS" ON KEYWORDS
-*    3: EVALUATE BOOLEAN EXPRESSION, USING KEYWORD "HITS" FROM FSA-RUN
-        /* 2: RUN FSA ON INPUT-LINE <STR> */
-        D(PUTS("RUN FSA ON INPUT ...\N"));
-        /* 3: EVALUATE BOOLEAN EXPRESSION, USING KEYWORD "HITS" FROM FSA-RUN */
-/*   NAME   03.03           VDELFSA                                         */
-VOID VDELFSA(VOID)
-* DEALLOCATE WHOLE FSA STRUCTURE (FREE ALL NODE-LISTS FROM ASTATE0[])
-} /* END FUNCTION VDELFSA() */
-* DEALLOCATE ONE LIST OF NODES IN FSA STRUCTURE ...
-* CHECK FOR A SPECIFIED FSA STATE IN THE QUEUE
-/*   NAME   04.01           VDUMPFSA                                        */
-VDUMPFSA(INT TYPE) {
-} /* END FUNCTION VDUMPFSA() */
+[0] --(F)--> [0x5b3a557376b0]
+   FREE MV-sTRANS: [0x5b3a557376b0] --(D)--> [0x5b3a557377a0]
+   FREE MV-sTRANS: [0x5b3a557376b0] --(F)--> [0x5b3a557376b0]
+   FREE MV-sTRANS: [0x5b3a557376b0] --(N)--> [0x5b3a557378e0]
+   FREE MV-sTRANS: [0x5b3a557376b0] --(S)--> [0x5b3a557376e0]
+      FREE MV-sTRANS: [0x5b3a557376e0] --(A)--> [0x5b3a55737730]
+      FREE MV-sTRANS: [0x5b3a557376e0] --(D)--> [0x5b3a557377a0]
+      FREE MV-sTRANS: [0x5b3a557376e0] --(F)--> [0x5b3a557376b0]
+      FREE MV-sTRANS: [0x5b3a557376e0] --(N)--> [0x5b3a557378e0]
+         FREE MV-sTRANS: [0x5b3a55737730] --(D)--> [0x5b3a557377a0]
+         FREE MV-sTRANS: [0x5b3a55737730] --(F)--> [0x5b3a557376b0]
+         FREE MV-sTRANS: [0x5b3a55737730] --(N)--> [0x5b3a557378e0]
+         FREE sSTATE: [0x5b3a55737730]
+      FREE GO-sTRANS: [0x5b3a557376e0] --(A)--> [0x5b3a55737730]
+      FREE sSTATE: [0x5b3a557376e0]
+   FREE GO-sTRANS: [0x5b3a557376b0] --(S)--> [0x5b3a557376e0]
+   FREE sSTATE: [0x5b3a557376b0]
+
+[0] --(N)--> [0x5b3a557378e0]
+   FREE MV-sTRANS: [0x5b3a557378e0] --(D)--> [0x5b3a557377a0]
+   FREE MV-sTRANS: [0x5b3a557378e0] --(F)--> [0x5b3a55737910]
+   FREE MV-sTRANS: [0x5b3a557378e0] --(N)--> [0x5b3a557378e0]
+      FREE MV-sTRANS: [0x5b3a55737910] --(D)--> [0x5b3a557377a0]
+      FREE MV-sTRANS: [0x5b3a55737910] --(F)--> [0x5b3a557376b0]
+      FREE MV-sTRANS: [0x5b3a55737910] --(N)--> [0x5b3a557378e0]
+      FREE MV-sTRANS: [0x5b3a55737910] --(S)--> [0x5b3a55737960]
+         FREE MV-sTRANS: [0x5b3a55737960] --(A)--> [0x5b3a557379b0]
+         FREE MV-sTRANS: [0x5b3a55737960] --(D)--> [0x5b3a557377a0]
+         FREE MV-sTRANS: [0x5b3a55737960] --(F)--> [0x5b3a557376b0]
+         FREE MV-sTRANS: [0x5b3a55737960] --(N)--> [0x5b3a557378e0]
+            FREE MV-sTRANS: [0x5b3a557379b0] --(D)--> [0x5b3a557377a0]
+            FREE MV-sTRANS: [0x5b3a557379b0] --(F)--> [0x5b3a557376b0]
+            FREE MV-sTRANS: [0x5b3a557379b0] --(N)--> [0x5b3a557378e0]
+            FREE sSTATE: [0x5b3a557379b0]
+         FREE GO-sTRANS: [0x5b3a55737960] --(A)--> [0x5b3a557379b0]
+         FREE sSTATE: [0x5b3a55737960]
+      FREE GO-sTRANS: [0x5b3a55737910] --(S)--> [0x5b3a55737960]
+      FREE sSTATE: [0x5b3a55737910]
+   FREE GO-sTRANS: [0x5b3a557378e0] --(F)--> [0x5b3a55737910]
+   FREE sSTATE: [0x5b3a557378e0]
 
 Process finished with exit code 1
+
+
+
+

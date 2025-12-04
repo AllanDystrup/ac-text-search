@@ -12,7 +12,7 @@ echo ============================================================
 
 
 echo ------------------------------------------------------------
-echo SCANNER - BOOLEAN OPERATORS				
+echo SCANNER - BOOLEAN OPERATORS
 
 # REM Obs: XOR operator % must be escaped as a batchfile metachar (ie: %%)
 echo --------------------

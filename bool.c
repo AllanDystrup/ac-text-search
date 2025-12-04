@@ -172,8 +172,10 @@
 #define COPYRIGHT  "Copyright (c) 1990 Allan Dystrup"
 #define VERSION    "v.1.2"
 
+/********** UNIT TEST ***********/
+// #define MAIN
+/********** UNIT TEST ***********/
 
- 
 /*--------------------------------------------------------------------------*/
 /*                        PRIVATE GLOBAL DATA                               */
 /*--------------------------------------------------------------------------*/
@@ -265,9 +267,12 @@ main(argc, apzArgv)
 	printf("\nPARSER ...\n");     
 	strcpy(aInfix, apzArgv[1]);   	/* restore org. input string (aInfix) */     
 	pzPostfix = pzParse(aInfix);     
-	printf("INFIX.. : %s\n", aInfix);     
-	printf("POSTFIX : %s\n", (const char*) pzPostfix);
-	   
+	printf("INFIX.. : %s\n", aInfix);
+
+	BYTE PF[50]; strcpy(PF, pzPostfix);		/* PF: postfix string cleared for high bit */
+	for (int j=0; PF[j] != '\0'; PF[j] &= '\x7F', j++) ;
+	printf("POSTFIX : [%s ~ %s]\n", (const char*) pzPostfix, (const char*) PF);
+
 	/* 3: Test INTERPRETER */     
 	printf("\nINTERPRETER ...\n");     
 	for (i = 1; i < SYMMAX; i++)      /* set up dymmy values for test */

@@ -1,6 +1,6 @@
 /*+1=================================FSA====================================*/
 /* MODULE                            AC.C                                   */
-/*==========================================================================*/
+/*=================================NFSA DFSA================================*/
 /* FUNCTION   Aho & Corasic algorithm for searching a text for several fixed
 *             substrings. This module implements a simple "Finite State
 *             Automaton" (FSA) to locate all occurences of any of a number
@@ -275,31 +275,41 @@ void main(
 	FLAG UCASE = FALSE;             /* Case INsensitive search ? */
 
 	/* 1: Parse command line options */
-     	while (--argc && (*++argv)[0] == '-')
-			for (temp = argv[0] + 1; *temp != '\0'; temp++)
-				switch (toupper(*temp)) {
-					case 'N':
-							type  = NFSA;
-							break;
-
-					case 'U':
-							UCASE = TRUE;
-							break;
-					default:
-						exit(1);
-				}
+	while (--argc && (*++argv)[0] == '-')
+		for (temp = argv[0] + 1; *temp != '\0'; temp++)
+			switch (toupper(*temp)) {
+				case 'N':
+					type  = NFSA;
+					break;
+				case 'D':	/* Default, - but anyway... */
+					type  = DFSA;
+					break;
+				case 'U':
+						UCASE = TRUE;
+						break;
+				default:
+					exit(1);
+			}
 
 	/* 2: Parse Bool search expression to postfix string and keyword list */
 	if ( argc <= 0 )
 		vError(EARG000, "Error in input arguments");
 
 	D(printf("\n\n=============== BUILDING NEW FSA =================\n\n"));
+
+	D(printf("INFIX.. : %s\n\n", *argv);)
+
 	D(puts("PARSE INPUT STRING ...")) ;
 	pzPostfix = pzParse(UCASE ? pzToupperStr(*argv++) : *argv++);
-	D(printf("\t%s\n", *argv));
+	BYTE PF[50]; strcpy(PF, pzPostfix);		/* PF: postfix string cleared for high bit */
+	for (int j=0; PF[j] != '\0'; PF[j] &= '\x7F', j++) ;
+	printf("\nPOSTFIX : [%s ~ %s]\n", (const char*) pzPostfix, (const char*) PF);
+
+	D(printf("\nINPUT TEXT : \t%s\n", *argv));
 	argc--;
 
 	/* 3.1: Initialize AC-search */
+	D(printf("\nBUILD FSA type %sFSA", (type==1 ? "N" : "D"));)
 	vBuildFsa(type);
 
 	/* 3.2: Run AC-search on each line of input-file */
@@ -357,9 +367,8 @@ vBuildFsa(int type)
 	vBuildFailMoveTrans(type);
 
 	/* 3: Dump FSA for debugging (optional) */
-	D(vDumpFsa(NFSA));
-	if (type == DFSA)
-		D(vDumpFsa(DFSA));
+	D((type==DFSA ? vDumpFsa(DFSA) : vDumpFsa(NFSA));)
+
 }
 /* END function vBuildFsa() */
 
@@ -599,7 +608,7 @@ vBuildFailMoveTrans(int type)
 	/* We also use aState0[] for the DFSA, so for all x M(0,x) = G(0,x) */
 	/* Now we only have to fill Q with go-transitions out of state 0.   */
 	for (cText = 1; (0 < cText && cText <= UCHAR_MAX); cText++)
-		if (s1 = psRunTrans(NFSA, NULL, cText))
+		if (s1	= psRunTrans(NFSA, NULL, cText))
 			vAllocQElem(&first, &last, s1);
 
 	/* 3: While Q not empty ... */
@@ -1108,7 +1117,7 @@ vDumpNode(int type, sSTATE * s) {
 	/* dump state */
 	printf("%sState: %p [ ", indent, s);
 
-	/***** HACK *****/
+	/***** ANSI to ISO/IEC *****/
 	// for (i = 0; j = *(s->index + i); i++)
 	//		printf("%s ", symtable[j].pzLexptr);
 	for (i = 0; j = (s->index == NULL ? 0 : *(s->index + i)); i++)
