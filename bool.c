@@ -179,25 +179,25 @@
 /*--------------------------------------------------------------------------*/
 /*                        PRIVATE GLOBAL DATA                               */
 /*--------------------------------------------------------------------------*/
-/* Lexemes must by one char in range [0-127] */
-/* Token       Lexeme              Semantics        */
-#define OR     (BYTE) '/'    	/* boolean OR       */
-#define XOR    (BYTE) '%' 		/* boolean XOR      */
-#define AND    (BYTE) '&' 		/* boolean AND      */
-#define NOT    (BYTE) '^'   	/* boolean NOT      */ 
+	/* Lexemes must by one char in range [0-127] */
+	/* Token       Lexeme              Semantics        */
+	#define OR     (BYTE) '/'    	/* boolean OR       */
+	#define XOR    (BYTE) '%' 		/* boolean XOR      */
+	#define AND    (BYTE) '&' 		/* boolean AND      */
+	#define NOT    (BYTE) '^'   	/* boolean NOT      */
 
-#define LP     (BYTE) '('    	/* left parenthesis */
-#define RP     (BYTE) ')'     	/* right parantesis */ 
+	#define LP     (BYTE) '('    	/* left parenthesis */
+	#define RP     (BYTE) ')'     	/* right parantesis */
 
-#define QUOTE  (BYTE) ':'     	/* quoted string    */
-#define ESCAPE (BYTE) '\\'    	/* escape next char */ 
+	#define QUOTE  (BYTE) ':'     	/* quoted string    */
+	#define ESCAPE (BYTE) '\\'    	/* escape next char */
 
-#define ID     (BYTE) 'I'     	/* identifier       */
-#define EOI    (BYTE) '\0'   	/* End Of Input     */   
+#define ID     (BYTE) 'I'     		/* identifier       */
+#define EOI    (BYTE) '\0'   		/* End Of Input     */
 
-PRIVATE BYTE* yytext = (BYTE *) "";   /* Lexeme (not \0 terminated) */ 
-PRIVATE int   yyleng = 0;             /* Lexeme length              */ 
-PRIVATE BYTE  aEmitStr[OUTMAX];       /* Output string from Emitter */   
+PRIVATE BYTE* yytext = (BYTE *) ""; /* Lexeme (not \0 terminated) */
+PRIVATE int   yyleng = 0;           /* Lexeme length              */
+PRIVATE BYTE  aEmitStr[OUTMAX];     /* Output string from Emitter */
 
 
 /*--------------------------------------------------------------------------*/

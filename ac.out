@@ -421,6 +421,105 @@ Postfix Boolean evaluation :
 OUTPUT ...
 >       /*=================================NFSA DFSA================================*/
 
+etc.
+etc.
+etc.
+
+FULL OUTPUT (using #undef DEBUG)
+
+/home/allan/CLionProjects/ac/cmake-build-debug/ac FSA&^(Dfsa/Nfsa) ./ac.c
+
+POSTFIX : [�ަ ~ /^&]
+/*+1=================================FSA====================================*/
+/*=================================NFSA DFSA================================*/
+*             Automaton" (FSA) to locate all occurences of any of a number
+*             - constructs a Deterministic Finite State Automaton (DFSA)
+*               DFSA takes time proportional to the sum of the lengths of
+*             - then uses the DFSA to process the text in one pass;
+*               The number of state transitions made by the DFSA in pro-
+*                <options>  -N to force a NFSA search (default DFSA)
+* A pattern matching machine also called a "Finite State Automaton" (FSA)
+* A "Nondeterministic FSA" (NFSA) uses intermediate failure transitions
+* A "Deterministic FSA" (DFSA) encodes all possible combinations of keyword
+* The desicion to use a NFSA or a DFSA is a classic choice of memory usage
+* (minimized by NFSA) vs. execution speed (minimized by DFSA). This imple-
+*=============================== NFSA ======================================
+*  * The behavior of the NFSA is described by 3 functions :
+* The operating cycle of the NFSA is defined by :
+* The NFSA algorithm is thus :
+*=============================== DFSA ======================================
+* The behavior of the DFSA is described by 2 functions :
+*    a state s'. M replaces the two NFSA functions : G and F.
+  - an output function O, identical to the NFSA O-function.
+* The operating cycle of the DFSA is characterized by exactly one transition
+* per input character (ie. failure transitions of the NFSA are eliminated).
+* The DFSA algorithm is :
+#define NFSA        1
+#define DFSA        2
+typedef struct transition {     /* FSA transition element -----------  */
+typedef struct state {          /* FSA state element ----------------- */
+        sTRANS   *psGoList;         /* Ptr to head of "go" list for NFSA   */
+        sTRANS   *psMvList;         /* Ptr to head of "move" list for DFSA */
+        struct state *psFailSt;     /* Ptr to failure state for NFSA       */
+*    <options>  -N to force a NFSA search (default DFSA)
+*       3.2: Run AC-search machine (NFSA or DFSA) on each line of input-file <file>
+        int  type  = DFSA;              /* Type of FSA, default DFSA */
+                                        type  = NFSA;
+                                        type  = DFSA;
+        D(printf("\n\n=============== BUILDING NEW FSA =================\n\n"));
+        D(printf("\nBUILD FSA type %sFSA", (type==1 ? "N" : "D"));)
+* Construct a "Finite State Automaton" (FSA) from the keywords in symtable[]
+*    3: Dump of FSA for debygging (optional)
+        /* 3: Dump FSA for debugging (optional) */
+        D((type==DFSA ? vDumpFsa(DFSA) : vDumpFsa(NFSA));)
+* Construction of goto graph data structure for the goto function G of FSA.
+        /* 1: Initialize FSA State 0 go transition array to : G(0,x) = FAIL */
+                ((s = psRunTrans(NFSA, psState, *pzIndex)) != &sFail);
+* ----------------- Build the failure function F for NFSA ------------------
+* ------------- Optionally build the move function M for DFSA --------------
+        /* We also use aState0[] for the DFSA, so for all x M(0,x) = G(0,x) */
+                if (s1  = psRunTrans(NFSA, NULL, cText))
+                        if ((s2 = psRunTrans(NFSA, s1, cText)) != &sFail) {
+                                for (sf = s1->psFailSt; psRunTrans(NFSA, sf, cText) == &sFail;)
+                                s2->psFailSt = psRunTrans(NFSA, sf, cText);
+                                if (type == DFSA)
+                                        s2 = psRunTrans(DFSA, s1->psFailSt, cText);
+                        if (type == DFSA && s2)
+int            type,                /* Search type : NFSA or DFSA    */
+*    2: Run FSA on input-line <str>, and note "hits" on keywords
+*    3: Evaluate boolean expression, using keyword "hits" from FSA-run
+        /* 2: Run FSA on input-line <str> */
+        D(puts("RUN FSA ON INPUT ...\n"));
+        if (type == NFSA)
+        /* NFSA : Nondeterministic Finite State Automaton, use go-trans      */
+                while (psRunTrans(NFSA, psState, *str) == &sFail) {
+                psState = psRunTrans(NFSA, psState, *str);
+        else /* type == DFSA */
+        /* DFSA : Deterministic Finite State Automaton, use move-trans       */
+                psState = psRunTrans(DFSA, psState, *str);
+        /* 3: Evaluate boolean expression, using keyword "hits" from FSA-run */
+* list - return pointer to failure-state (type NFSA) or NULL (type DFSA).
+                t = (type == NFSA ? psState->psGoList : psState->psMvList);
+                /* Return pointer to new state, or failure (NFSA) resp. NULL (DFSA) */
+                return (t ? t->psState : (type == NFSA ? &sFail : NULL));
+* Deallocate whole FSA structure (free all node-lists from aState0[])
+* Deallocate one list of nodes in FSA structure ...
+*    1: Remove move-list (for DFSA). NB: states removed via go-list
+*    2: Remove go-list (for NFSA)
+        /* 1: Remove move-list (for DFSA). NB: states removed via go-list */
+        /* 2: Remove go-list (for NFSA) */
+* Check for a specified FSA state in the queue
+                type == NFSA ? "NFSA" : "DFSA");
+        if (type == DFSA)
+                if (s = psRunTrans(NFSA, NULL, cText)) {
+                        if ( type == NFSA )
+                        else /* type == DFSA */
+        printf(type == NFSA ? "%sFAIL\t-> %p\n" : "", indent, s->psFailSt);
+        for (t = (type == NFSA ? s->psGoList : s->psMvList); t; t = t->psTrans) {
+                if (type == NFSA)                       /* type == NFSA */
+                else if (!fCheckQElem(f, t->psState)) { /* type == DFSA */
+
+Process finished with exit code 1
 
 ####################################################################################################
 
@@ -848,6 +947,65 @@ INPUT ...
 etc.
 etc.
 etc.
+FULL OUTPUT (using #undef DEBUG) :
+
+/home/allan/CLionProjects/ac/cmake-build-debug/ac -U FSA&^(Dfsa/Nfsa) ./ac.c
+
+POSTFIX : [�ަ ~ /^&]
+/*+1=================================FSA====================================*/
+*             AUTOMATON" (FSA) TO LOCATE ALL OCCURENCES OF ANY OF A NUMBER
+* A PATTERN MATCHING MACHINE ALSO CALLED A "FINITE STATE AUTOMATON" (FSA)
+TYPEDEF STRUCT TRANSITION {     /* FSA TRANSITION ELEMENT -----------  */
+TYPEDEF STRUCT STATE {          /* FSA STATE ELEMENT ----------------- */
+PRIVATE VOID    VDUMPFSA(INT TYPE);
+        D(PRINTF("\N\N=============== BUILDING NEW FSA =================\N\N"));
+        D(PRINTF("\NBUILD FSA TYPE %SFSA", (TYPE==1 ? "N" : "D"));)
+                VDELFSA();
+* CONSTRUCT A "FINITE STATE AUTOMATON" (FSA) FROM THE KEYWORDS IN SYMTABLE[]
+*    3: DUMP OF FSA FOR DEBYGGING (OPTIONAL)
+        /* 3: DUMP FSA FOR DEBUGGING (OPTIONAL) */
+* CONSTRUCTION OF GOTO GRAPH DATA STRUCTURE FOR THE GOTO FUNCTION G OF FSA.
+        /* 1: INITIALIZE FSA STATE 0 GO TRANSITION ARRAY TO : G(0,X) = FAIL */
+*    2: RUN FSA ON INPUT-LINE <STR>, AND NOTE "HITS" ON KEYWORDS
+*    3: EVALUATE BOOLEAN EXPRESSION, USING KEYWORD "HITS" FROM FSA-RUN
+        /* 2: RUN FSA ON INPUT-LINE <STR> */
+        D(PUTS("RUN FSA ON INPUT ...\N"));
+        /* 3: EVALUATE BOOLEAN EXPRESSION, USING KEYWORD "HITS" FROM FSA-RUN */
+/*   NAME   03.03           VDELFSA                                         */
+VOID VDELFSA(VOID)
+* DEALLOCATE WHOLE FSA STRUCTURE (FREE ALL NODE-LISTS FROM ASTATE0[])
+} /* END FUNCTION VDELFSA() */
+* DEALLOCATE ONE LIST OF NODES IN FSA STRUCTURE ...
+* CHECK FOR A SPECIFIED FSA STATE IN THE QUEUE
+/*   NAME   04.01           VDUMPFSA                                        */
+VDUMPFSA(INT TYPE) {
+} /* END FUNCTION VDUMPFSA() */
+
+Process finished with exit code 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 DELETION OF STATE MACHINE ...
@@ -918,6 +1076,7 @@ DELETION OF STATE MACHINE ...
    FREE sSTATE: [0x5b3a557378e0]
 
 Process finished with exit code 1
+
 
 
 

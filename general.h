@@ -8,9 +8,9 @@
 
 	#define GENERAL_H           /* Matching endif is at end of file.		*/
 
-// Chose Build configuration (normal or debug)
-#define DEBUG	//******** DEBUG  *********/
-//#undef DEBUG	//******** NORMAL *********/
+	// Chose Build configuration (normal or debug)
+	//#define DEBUG	//******** DEBUG  *********/
+	#undef DEBUG	//******** NORMAL *********/
 
 	#ifdef  DEBUG
 		#define PRIVATE
@@ -97,8 +97,7 @@
 						+ _IS(t,20) + _IS(t,24) + _IS(t,28) + _IS(t,32) ) )
 	#define MAXINT (((unsigned)~0) >> 1)
 
- 
-	#ifndef max
+ 	#ifndef max
 		#define max(a,b)    ( ((a) > (b)) ? (a) : (b))
 	#endif
 
