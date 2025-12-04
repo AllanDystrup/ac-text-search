@@ -45,6 +45,13 @@ USAGE:
       <file>     is the file to search for boolexpr, line by line.
 
 
+TRACE:
+-
+If you compile the sources with #define DEBUG set (in general.h), the program will output a trace of the execution, showing - so to speak - 'the cogwheels turning' for the Finite State Automaton, the boolean interpreter and the abstract stack machine. This can also be a way to get a deeper insight into the algorithm, as well as a means of pinpointing the location of a runtime error for further debugging.
+
+A version of the *ac* program compiled with 'DEBUG' enabled is included as: *ac-d*, and an example of the output from *ac-d* is captured in: *'ac.out'*.
+
+
 DISCLAIMER   (aka: "A tour down memory lane...")
 -
 This code was developed in the start of the 1990'ies, and it includes macros to make it compile on a PC and run on different target architectures, such as MSDOS, OS/2 (!) and POSIX UNIX.
@@ -54,4 +61,4 @@ The C-code was made fully compliant to K&R C (1978) and ANSI C (1989) standards,
 For fun, I have now ported this ancient C-code to a modern platform (UBUNTU Linux on Windows-10 WSL), using gcc v.13.3 (Ubuntu 13.3). 
 The gcc v.13 compiler is complient with the ISO/IEC 9899:2024 standard, as can be checked by a modern Tidy syntax verifyer (e.g. the built-in Clang-Tidy v.21 in CLion).
 
-Running gcc v.13 on ancient K&R/ANSI C-code did result in a few errors (such as: a null-pointer now cannot be treated as integer 0, as in K&R C) but circumventing this, I have made the code compile and run on UBUNTU using gcc. The Tidy syntax checker still throws a ton of "warnings", but to fully silence these would require a serious rewrite of the code, -- and that was not the scope for this project.
+Running gcc v.13 on ancient K&R/ANSI C-code did result in a few errors (such as: contrary to K&R C, in 'modern C' a null-pointer cannot be treated as an integer value 0) but circumventing this, I have made the code compile and run on UBUNTU using gcc. The Tidy syntax checker will still throw a ton of "warnings", but to fully silence these would require a serious rewrite of the code, -- and that was not the scope for this project.
