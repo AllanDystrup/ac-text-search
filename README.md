@@ -42,7 +42,7 @@ USAGE:
                      ':'      /* quoted string    */
                      '\\'     /* escape next char */ 
                   
-      <file>     is the file to search for boolexpr, line by line.
+      <file>     is the file (if omitted: stdin) to search for boolexpr, line by line.
 
 
 TRACE:
@@ -58,7 +58,6 @@ This code was developed in the start of the 1990'ies, and it includes macros to 
 
 The C-code was made fully compliant to K&R C (1978) and ANSI C (1989) standards, as checked by Lint, and it has been included in a commercial product that was deployed to and ran on several DOS and UNIX versions, *without any failures* (Excluding one, which was caused by a non-compliant UNIX implementation. -- And was easily corrected :-).
      
-For fun, I have now ported this ancient C-code to a modern platform (UBUNTU Linux on Windows-10 WSL), using gcc v.13.3 (Ubuntu 13.3). 
-The gcc v.13 compiler is complient with the ISO/IEC 9899:2024 standard, as can be checked by a modern Tidy syntax verifyer (e.g. the built-in Clang-Tidy v.21 in CLion).
+For fun, I have now ported this ancient C-code to modern platforms: UBUNTU Linux on Windows-10 WSL, and Windows-10 native (terminal), both using gcc v.13.3 in the CLion IDE. The gcc v.13 compiler is complient with the ISO/IEC 2024 standard, as can be checked by a modern Tidy syntax verifyer (e.g. the built-in Clang-Tidy v.21 in CLion).
 
-Running gcc v.13 on ancient K&R/ANSI C-code did result in a few errors (such as: contrary to K&R C, in 'modern C' a null-pointer cannot be treated as an integer value 0) but circumventing this, I have made the code compile and run on UBUNTU using gcc. The Tidy syntax checker will still throw a ton of "warnings", but to fully silence these would require a serious rewrite of the code, -- and that was not the scope for this project.
+Running gcc v.13 on ancient K&R/ANSI C-code did result in a few errors (such as: contrary to K&R C, in 'modern C' a null-pointer cannot be treated as an integer value 0); But circumventing this, I have made the code compile and run on UBUNTU and Windows using gcc. The Tidy syntax checker will still throw a ton of "warnings", but to fully silence these would require a serious rewrite of the code, -- and that was not the scope for this project.
