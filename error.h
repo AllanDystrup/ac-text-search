@@ -80,7 +80,7 @@
 	/*************************************************************************/
 	/* Report error 'type' on stderr & return EXIT_FAILURE */
 	extern void
- 		vError(ERRNUM type, char *param);
+ 		vError(ERRNUM typ, char *param);
  
  
  #endif   /* #define ERROR_H */

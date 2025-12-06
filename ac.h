@@ -13,7 +13,7 @@
 /*             Port to UBUNTU Linux on Windows10/WSL, Using CLion		    */
 /*==========================================================================*/
 
-#ifndef AC_H             	    /* Make sure AC,H is included only once   */
+#ifndef AC_H             	/* Make sure AC,H is included only once   */
 #   define AC_H                	/* Matching #endif is at End-Of-File      */
 
  
@@ -21,7 +21,7 @@
 #      include "general.h"
 #   endif
 
-#   ifdef AC_ALLOC             	/* Allocate & Initialize data struct     */
+#   ifdef AC_ALLOC             	/* Allocate & Initialize data structï ?   */
 #      define CLASS
 #      define I(x) x
 #   else

@@ -9,7 +9,11 @@
 #include <stdio.h> 
 #include "stack.h"     
 
+/********** UNIT TEST ***********/
+//#define MAIN
 #undef MAIN
+/********** UNIT TEST ***********/
+
 #ifdef MAIN
 /*+3 MODULE STACK.C --------------------------------------------------------*/ 
 /*   NAME   00                     main()                                   */ 

@@ -1,26 +1,27 @@
-/*=========================================================================*/ 
-/*  MODULE                      STACK.H                                    */ 
-/*=========================================================================*/ 
-/*  FUNCTION     Macros for creating stacks of simple objects.  
-*  
-*   SYSTEM        Standard (ANSI/ISO) C.  
-*                 Tested on PC/MS DOS 5.0 (MSC 600A). 
-* 
-*   PROGRAMMER    Allan Dystrup.  
-*  
-*   COPYRIGHT     (c) Allan Dystrup, 1991  
-*  
-*   VERSION       $Header: d:/cwk/kf/h/RCS/stack.h 1.1 92/10/25 17:19:21  
-*                 Allan_Dystrup Exp Locker: Allan_Dystrup $                  
-*		  ----------------------------------------------------------  
-*                 $Log: stack.h $  
-*                 Revision 1.1  92/10/25  17:19:21  Allan_Dystrup  
+/*==============================================================================*/
+/*  MODULE                      STACK.H                                         */
+/*==============================================================================*/
+/*  FUNCTION     Macros for creating stacks of simple objects.
+*
+*   SYSTEM        Standard (ANSI/ISO) C.
+*                 Tested on PC/MS DOS 5.0 (MSC 600A).
+*
+*   PROGRAMMER    Allan Dystrup.
+*
+*   COPYRIGHT     (c) Allan Dystrup: 1991, 2025
+*
+*   VERSION       $Header: d:/cwk/kf/h/RCS/stack.h 1.1 92/10/25 17:19:21
+*                 Allan_Dystrup Exp Locker: Allan_Dystrup $
+*		  ----------------------------------------------------------
+*                 $Log: stack.h $
+*                 Revision 1.1  92/10/25  17:19:21  Allan_Dystrup
 *                 Initial revision
 *
 *                 Revision 1.2 2025/12/02 11:00:00	 Allan_Dystrup
-*				  Port to UBUNTU Linux on Win.10/WSL, Using CLion
+*		   Port to UBUNTU  on Win.10/WSL, Using CLion for Linux 
+*		   Port to Windows 10 native, Using CLion for Windows
 *
-*==========================================================================*/  
+*==============================================================================*/
 
 #ifndef STACK_H             /* Make sure stack.h is included once */
 	#define STACK_H         /* Matching #endif is at end of file. */
@@ -38,23 +39,24 @@
 		stack_cls t_##stack (*p_##stack) = stack + (size)
 
 	/* Reset stack to initial (empty) condition, discarding all stack elements */
-	#define stack_clear(stack)									\
+	#define stack_clear(stack)					\
 		( (p_##stack) = (stack + sizeof(stack)/sizeof(*stack)) )
 
 	/*---------------------------------------------------------------------*/
 	/*                             Test stack                              */
 	/*---------------------------------------------------------------------*/
 	/* Test for stack full : Evaluates to TRUE, if the stack is full */
-	#define stack_full(stack)              \
+	#define stack_full(stack)					\
 		( (p_##stack) <= stack )
 
 	/* Test for stack empty : Evaluates to TRUE, if the stack is empty */
-	#define stack_empty(stack)             \
+	#define stack_empty(stack)					\
 		( (p_##stack) >= (stack + sizeof(stack)/sizeof(*stack)) )
 	
 	/* Get number of elements : Evaluate #elements currently on the stack */
-	#define stack_ele(stack)               \
+	#define stack_ele(stack)					\
 		( (sizeof(stack)/sizeof(*stack)) - (p_##stack-stack) )
+
 
 	/*---------------------------------------------------------------------*/
 	/*                         Push/Pop without BorderTest                 */
@@ -96,8 +98,8 @@
 	#define EStk0  0				/* Error codes */
 	#define EStk1  1
 
-	#define stack_err(o)  ( (o)     \
-		? vError(EStk0)          	\
+	#define stack_err(o)  ( (o)			\
+		? vError(EStk0)          		\
 		: vError(EStk1) )
 
 	

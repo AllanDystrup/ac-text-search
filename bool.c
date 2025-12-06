@@ -79,7 +79,7 @@
 /*    To make this possible, we have to transcribe the productions to get : */
 /*     - no left recursion (thus eliminating infinite loops)                */
 /*     - no conflict between two right sides for any lookahead symbol       */
-/*       (ie. an unambigous FIRST-set for any production) :                 */
+/*       (i.e. an unambigous FIRST-set for any production) :                */
 /*             Z  ->   E  EOS                                               */
 /*             E  ->   T  E'                                                */
 /*             E' ->   OR  T E' | XOR T E' | epsilon                        */
@@ -173,31 +173,33 @@
 #define VERSION    "v.1.2"
 
 /********** UNIT TEST ***********/
-// #define MAIN
+//#define MAIN
+#undef MAIN
 /********** UNIT TEST ***********/
+
 
 /*--------------------------------------------------------------------------*/
 /*                        PRIVATE GLOBAL DATA                               */
 /*--------------------------------------------------------------------------*/
-	/* Lexemes must by one char in range [0-127] */
-	/* Token       Lexeme              Semantics        */
-	#define OR     (BYTE) '/'    	/* boolean OR       */
-	#define XOR    (BYTE) '%' 		/* boolean XOR      */
-	#define AND    (BYTE) '&' 		/* boolean AND      */
-	#define NOT    (BYTE) '^'   	/* boolean NOT      */
+/* Lexemes must by one char in range [0-127] */
+/* Token       Lexeme              Semantics        */
+#define OR     (BYTE) '/'    	/* boolean OR       */
+#define XOR    (BYTE) '%' 		/* boolean XOR      */
+#define AND    (BYTE) '&' 		/* boolean AND      */
+#define NOT    (BYTE) '^'   	/* boolean NOT      */ 
 
-	#define LP     (BYTE) '('    	/* left parenthesis */
-	#define RP     (BYTE) ')'     	/* right parantesis */
+#define LP     (BYTE) '('    	/* left parenthesis */
+#define RP     (BYTE) ')'     	/* right parantesis */ 
 
-	#define QUOTE  (BYTE) ':'     	/* quoted string    */
-	#define ESCAPE (BYTE) '\\'    	/* escape next char */
+#define QUOTE  (BYTE) ':'     	/* quoted string    */
+#define ESCAPE (BYTE) '\\'    	/* escape next char */ 
 
-#define ID     (BYTE) 'I'     		/* identifier       */
-#define EOI    (BYTE) '\0'   		/* End Of Input     */
+#define ID     (BYTE) 'I'     	/* identifier       */
+#define EOI    (BYTE) '\0'   	/* End Of Input     */   
 
-PRIVATE BYTE* yytext = (BYTE *) ""; /* Lexeme (not \0 terminated) */
-PRIVATE int   yyleng = 0;           /* Lexeme length              */
-PRIVATE BYTE  aEmitStr[OUTMAX];     /* Output string from Emitter */
+PRIVATE BYTE* yytext = (BYTE *) "";   /* Lexeme (not \0 terminated) */ 
+PRIVATE int   yyleng = 0;             /* Lexeme length              */ 
+PRIVATE BYTE  aEmitStr[OUTMAX];       /* Output string from Emitter */   
 
 
 /*--------------------------------------------------------------------------*/
@@ -267,12 +269,9 @@ main(argc, apzArgv)
 	printf("\nPARSER ...\n");     
 	strcpy(aInfix, apzArgv[1]);   	/* restore org. input string (aInfix) */     
 	pzPostfix = pzParse(aInfix);     
-	printf("INFIX.. : %s\n", aInfix);
-
-	BYTE PF[50]; strcpy(PF, pzPostfix);		/* PF: postfix string cleared for high bit */
-	for (int j=0; PF[j] != '\0'; PF[j] &= '\x7F', j++) ;
-	printf("POSTFIX : [%s ~ %s]\n", (const char*) pzPostfix, (const char*) PF);
-
+	printf("INFIX.. : %s\n", aInfix);     
+	printf("POSTFIX : %s\n", (const char*) pzPostfix);
+	   
 	/* 3: Test INTERPRETER */     
 	printf("\nINTERPRETER ...\n");     
 	for (i = 1; i < SYMMAX; i++)      /* set up dymmy values for test */
@@ -589,7 +588,8 @@ PRIVATE void
 	static BYTE *index = aEmitStr; 	/* Index = current pointer into output string  */     
 	
 	if ((index - aEmitStr) > OUTMAX)        
-		vError(ETAB000, "OUTMAX");     
+		vError(ETAB000, "OUTMAX");
+
 	switch (bToken) {         
 	
 		case AND:      	/* Boolean operator */        

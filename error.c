@@ -35,6 +35,10 @@
 #include "general.h"
 #include "error.h" 
 
+/******** TEST DRIVER ********/
+//#define MAIN
+#undef  MAIN
+/******** TEST DRIVER ********/
 
 /*-------------------------------------------------------------------------*/ 
 /*                        Error Messages                                   */ 
@@ -111,18 +115,13 @@ int main() { /* DESCRIPTION
 *    Dump all ErrorMessages to stderr, using vError() for printout.  
 *-2*/
 
-	ERRNUM  errno;     /* For stepping through enumation : ERRNUM */ 
-	BYTE  	*msg;      /* For pointing to corresp. err.mess., cf. Errmsg[] */      
+	ERRNUM  errnum;     /* For stepping through enumation : ERRNUM */
+	BYTE  	*msg;       /* For pointing to corresp. err.mess., cf. Errmsg[] */
 
 	printf("\n======= Testudskrift af samtlige fejlmeddelelser =======\n\n"); 
 
-	for (errno = 0; errno <= ERRMAX; errno++) {        
-		
-msg = Errmsgs[(int) errno][0] + 3;        
-		if ( *msg != '#' ) {    /* Mark message in 1. byte of severity code */
-		       *msg = '#';      /* (dump only once & prevent EXIT_FAILURE)  */
-			vError(errno, "TEST");
-		}
+	for (errnum = 0; errnum <= ERRMAX; errnum++) {
+			vError(errnum, "Force Continue");
 	}
 
 } 
@@ -143,16 +142,17 @@ PUBLIC void vError(
  	int       i = 0;     
 
 	/* 1: Report error to stderr ... */     
-	fprintf(stderr, "\n\a=>%s", param);               /* Pinpoint error */
+	fprintf(stderr, "\n\a=>%s", param);			/* Pinpoint error */
 
-	fprintf(stderr, Errmsgs[(int) type][i++], type);  /* Error header   */
+	fprintf(stderr, Errmsgs[(int) type][i++], type);	/* Error header   */
 
-	while (Errmsgs[(int) type][i])                    /* Description    */
-		fputs(Errmsgs[(int) type][i++], stderr);  /* & correction   */
+	while (Errmsgs[(int) type][i])						/* Description    */
+		fputs(Errmsgs[(int) type][i++], stderr);		/* & correction   */
 
-	/* If fatal (ie. severety code STOP), exit ' failure' */     
-	if (strstr(Errmsgs[(int) type][0], "STOP"))       /* Fatal => quit  */
-		exit(EXIT_FAILURE);                       /* cf. stdlib.h   */
+	/* If fatal (ie. severety code STOP), exit ' failure' */
+	if ( strstr(Errmsgs[(int) type][0], "STOP")
+	&&	 strcmp(param,"Force Continue") != 0)			/* Unit Test    */
+					exit(EXIT_FAILURE);			/* cf. stdlib.h */
 
 } /* END function vError() */
 

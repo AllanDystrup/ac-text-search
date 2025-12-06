@@ -81,6 +81,7 @@
 	BOOL_CLASS void
 		vSymReset   P((void));
 
+
 #endif  /* #ifndef BOOL_H */
 /* END module bool.h                                                        */ 
 /*-1========================================================================*/
