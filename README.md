@@ -13,12 +13,18 @@ All conceptually very interesting (I think...:-).
 
 THE ALGORITHM:
 -
+```
    FIRST constructs (configurable at runtime as input parameter)
-   -N : a Nondeterministic Finite State Automaton (*NFSA*), or 
+   -N : a Nondeterministic Finite State Automaton (*NFSA*), or
    -D : a Deterministic Finite State Automaton (*DFSA*) for pattern matching from the keywords; 
-        Construction of the NFSA/DFSA takes time proportional to the sum of the lengths of the keywords, ie. time complexity O(n). 
-        
-   THEN uses the NFSA or DFSA to process the text in *one* pass; The number of state transitions made by the (D|N)FSA in processing the text is independent of the number of keywords.
+        Construction of the NFSA/DFSA takes time proportional to the sum of the lengths of the keywords, 
+        ie. time complexity O(n). 
+
+THEN  uses the NFSA or DFSA to process the text in *one* pass; 
+      The number of state transitions made by the (D|N)FSA in processing the text 
+      is independent of the number of keywords.
+```
+
 
    The output from the program are all lines in the input string / file that match the given search phrase.  
 
